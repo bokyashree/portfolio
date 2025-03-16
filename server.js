@@ -62,7 +62,9 @@ app.use('/api', contactRoutes); // Add the contact routes
   try {
     await connectDB();
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
+
+    // Bind the server to 0.0.0.0 to allow public access
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running on port ${PORT}`);
       console.log(`🛠 AdminJS running at http://localhost:${PORT}/admin`);
     });
@@ -71,3 +73,4 @@ app.use('/api', contactRoutes); // Add the contact routes
     process.exit(1);
   }
 })();
+
